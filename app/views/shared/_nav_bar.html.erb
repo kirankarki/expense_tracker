@@ -1,0 +1,50 @@
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <%= link_to 'Expense Tracker', root_url, class: "navbar-brand" %>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li <%= 'class=active' if request.url == root_url %> >
+          <%= link_to 'Home', root_url %>
+        </li>
+        <li <%= 'class=active' if request.url == budgets_url %> >
+          <%= link_to 'Budgets', budgets_url %>
+        </li>
+        <li <%= 'class=active' if request.url == expenses_url %> >
+          <%= link_to 'Expenses', expenses_url %>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <% if user_signed_in? %>
+          <li <%= 'class=active' if request.url == edit_user_registration_url %>>
+            <%= link_to edit_user_registration_url do %>
+              <span class="glyphicon glyphicon-edit"></span> Edit Account
+            <% end %>
+          </li>
+          <li>
+            <%= link_to destroy_user_session_path, method: :delete do %>
+              <span class="glyphicon glyphicon-log-out"></span> Logout
+            <% end %>
+          </li>
+        <% else %>
+          <li <%= 'class=active' if request.url == new_user_registration_url %>>
+            <%= link_to new_user_registration_url do %>
+              <span class="glyphicon glyphicon-user"></span> Sign Up
+            <% end %>
+          </li>
+          <li <%= 'class=active' if request.url == new_user_session_url %>>
+            <%= link_to new_user_session_url do %>
+              <span class="glyphicon glyphicon-log-in"></span> Login
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</nav>
