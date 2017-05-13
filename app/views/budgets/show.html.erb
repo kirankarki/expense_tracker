@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @budget.title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @budget.description %>
+</p>
+
+<p>
+  <strong>Original amount:</strong>
+  <%= @budget.original_amount %>
+</p>
+
+<p>
+  <strong>Start date:</strong>
+  <%= @budget.start_date %>
+</p>
+
+<p>
+  <strong>End date:</strong>
+  <%= @budget.end_date %>
+</p>
+
+<p>
+  <strong>Remaining amount:</strong>
+  <%= @budget.remaining_amount %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @budget.user %>
+</p>
+
+<%= link_to 'Edit', edit_budget_path(@budget) %> |
+<%= link_to 'Back', budgets_path %>

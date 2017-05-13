@@ -1,0 +1,29 @@
+# == Schema Information
+#
+# Table name: expenses
+#
+#  id          :integer          not null, primary key
+#  title       :string
+#  description :text
+#  amount      :integer
+#  spent_date  :date
+#  budget_id   :integer
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  description: MyText
+  amount: 1
+  spent_date: MyString
+  budget: one
+
+two:
+  title: MyString
+  description: MyText
+  amount: 1
+  spent_date: MyString
+  budget: two
