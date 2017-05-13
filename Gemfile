@@ -35,9 +35,21 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+# Authentication & Authorization
+gem 'devise', '~> 4.2', '>= 4.2.1'
+
+# UI
+gem 'bootstrap-sass', '~> 3.3', '>= 3.3.7'
+
 group :development, :test do
+  # Debugging & Errors
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
+  gem 'better_errors', '~> 2.1', '>= 2.1.1'
+
+  # Annotates Rails/ActiveRecord Models, routes, fixtures, and others based on the database schema.
+
+  gem 'annotate', '~> 2.7', '>= 2.7.1'
 end
 
 group :development do
