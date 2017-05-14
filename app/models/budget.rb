@@ -29,9 +29,9 @@ class Budget < ApplicationRecord
   def init_values
     default_date_format   = '%d %b %Y'
 
-    self.original_amount  = 0
-    self.remaining_amount = 0
-    self.start_date       = Date.current.strftime(default_date_format)
-    self.end_date         = (Date.current + 1.day ).strftime(default_date_format)
+    self.original_amount  ||= 0
+    self.remaining_amount ||= 0
+    self.start_date       ||= Date.current.strftime(default_date_format)
+    self.end_date         ||= (Date.current + 1.day ).strftime(default_date_format)
   end
 end
