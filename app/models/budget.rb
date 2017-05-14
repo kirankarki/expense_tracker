@@ -2,16 +2,17 @@
 #
 # Table name: budgets
 #
-#  id               :integer          not null, primary key
-#  title            :string
-#  description      :text
-#  original_amount  :integer
-#  start_date       :date
-#  end_date         :date
-#  remaining_amount :integer
-#  user_id          :integer
-#  created_at       :datetime         not null
-#  updated_at       :datetime         not null
+#  id                :integer          not null, primary key
+#  title             :string
+#  description       :text
+#  original_amount   :integer
+#  start_date        :date
+#  end_date          :date
+#  remaining_amount  :integer
+#  user_id           :integer
+#  created_at        :datetime         not null
+#  updated_at        :datetime         not null
+#  extra_used_amount :integer
 #
 # Indexes
 #
@@ -29,9 +30,10 @@ class Budget < ApplicationRecord
   def init_values
     default_date_format   = '%d %b %Y'
 
-    self.original_amount  ||= 0
-    self.remaining_amount ||= 0
-    self.start_date       ||= Date.current.strftime(default_date_format)
-    self.end_date         ||= (Date.current + 1.day ).strftime(default_date_format)
+    self.original_amount    ||= 0
+    self.remaining_amount   ||= 0
+    self.extra_used_amount  ||= 0
+    self.start_date         ||= Date.current.strftime(default_date_format)
+    self.end_date           ||= (Date.current + 1.day ).strftime(default_date_format)
   end
 end
