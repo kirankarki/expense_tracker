@@ -40,6 +40,7 @@ gem 'devise', '~> 4.2', '>= 4.2.1'
 
 # UI
 gem 'bootstrap-sass', '~> 3.3', '>= 3.3.7'
+gem 'bootstrap-datepicker-rails', '~> 1.6', '>= 1.6.4.1'
 
 group :development, :test do
   # Debugging & Errors

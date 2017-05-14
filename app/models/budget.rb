@@ -8,7 +8,7 @@
 #  original_amount  :integer
 #  start_date       :date
 #  end_date         :date
-#  remaining_amount :string
+#  remaining_amount :integer
 #  user_id          :integer
 #  created_at       :datetime         not null
 #  updated_at       :datetime         not null
@@ -24,4 +24,14 @@
 
 class Budget < ApplicationRecord
   belongs_to :user
+  after_initialize :init_values
+
+  def init_values
+    default_date_format   = '%d %b %Y'
+
+    self.original_amount  = 0
+    self.remaining_amount = 0
+    self.start_date       = Date.current.strftime(default_date_format)
+    self.end_date         = (Date.current + 1.day ).strftime(default_date_format)
+  end
 end
