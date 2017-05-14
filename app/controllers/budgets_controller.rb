@@ -26,7 +26,6 @@ class BudgetsController < ApplicationController
   # POST /budgets
   # POST /budgets.json
   def create
-    byebug
     @budget = current_user.budgets.new(budget_params)
 
     respond_to do |format|

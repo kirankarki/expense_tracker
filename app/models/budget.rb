@@ -27,13 +27,25 @@ class Budget < ApplicationRecord
   belongs_to :user
   after_initialize :init_values
 
-  def init_values
-    default_date_format   = '%d %b %Y'
+  DEFAULT_DATE_FORMAT = '%d %b %Y'
 
+  def start_date
+    if read_attribute(:start_date) != nil
+      read_attribute(:start_date).strftime(DEFAULT_DATE_FORMAT)
+    end
+  end
+
+  def end_date
+    if read_attribute(:end_date) != nil
+      read_attribute(:end_date).strftime(DEFAULT_DATE_FORMAT)
+    end
+  end
+
+  def init_values
     self.original_amount    ||= 0
     self.remaining_amount   ||= 0
     self.extra_used_amount  ||= 0
-    self.start_date         ||= Date.current.strftime(default_date_format)
-    self.end_date           ||= (Date.current + 1.day ).strftime(default_date_format)
+    self.start_date         ||= Date.current.strftime(DEFAULT_DATE_FORMAT)
+    self.end_date           ||= (Date.current + 1.day ).strftime(DEFAULT_DATE_FORMAT)
   end
 end
