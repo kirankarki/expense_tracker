@@ -1,3 +1,11 @@
 .centered {
   text-align: center;
 }
+
+// Style for validation errors
+#error_explanation{
+  color: red;
+}
+.field_with_errors{
+  color: red;
+}

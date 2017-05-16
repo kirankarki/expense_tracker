@@ -16,7 +16,7 @@
   <tbody>
     <% @budgets.each do |budget| %>
       <tr>
-        <td><%= budget.title %></td>
+        <td><%= budget.title.truncate(40) %></td>
         <td><%= budget.start_date %></td>
         <td><%= budget.end_date %></td>
         <td><%= budget.original_amount %></td>

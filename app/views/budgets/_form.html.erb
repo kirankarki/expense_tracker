@@ -1,19 +1,18 @@
 <%= form_for(budget) do |f| %>
   <% if budget.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(budget.errors.count, "error") %> prohibited this budget from being saved:</h2>
-
-      <ul>
-      <% budget.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+      <h3><%= pluralize(budget.errors.count, "error") %> prohibited from being saved.</h>
     </div>
   <% end %>
 
   <div class="form-group">
     <%= f.label :title %>
     <%= f.text_field :title, class: "form-control" %>
+    <% if budget.errors[:title].present? %>
+      <p class = "field_with_errors" >
+        <%= budget.errors[:title].join('. ') %>
+      </p>
+    <% end %>
   </div>
 
   <div class="form-group">
@@ -24,26 +23,51 @@
   <div class="form-group">
     <%= f.label :original_amount %>
     <%= f.number_field :original_amount, class: "form-control", min: 0 %>
+    <% if budget.errors[:original_amount].present? %>
+      <p class = "field_with_errors" >
+        <%= budget.errors[:original_amount].join('. ') %>
+      </p>
+    <% end %>
   </div>
 
   <div class="form-group">
     <%= f.label :start_date %>
     <%= f.text_field :start_date, class: "form-control", readonly: true, data: { provide: "datepicker", date_format: "dd M yyyy" } %>
+    <% if budget.errors[:start_date].present? %>
+      <p class = "field_with_errors" >
+        <%= budget.errors[:start_date].join('. ') %>
+      </p>
+    <% end %>
   </div>
 
   <div class="form-group">
     <%= f.label :end_date %>
     <%= f.text_field :end_date, class: "form-control", readonly: true, data: { provide: "datepicker", date_format: "dd M yyyy" } %>
+    <% if budget.errors[:end_date].present? %>
+      <p class = "field_with_errors" >
+        <%= budget.errors[:end_date].join('. ') %>
+      </p>
+    <% end %>
   </div>
 
   <div class="form-group">
     <%= f.label :remaining_amount %>
     <%= f.number_field :remaining_amount, class: "form-control", min: 0 %>
+    <% if budget.errors[:remaining_amount].present? %>
+      <p class = "field_with_errors" >
+        <%= budget.errors[:remaining_amount].join('. ') %>
+      </p>
+    <% end %>
   </div>
 
   <div class="form-group">
     <%= f.label :extra_used_amount %>
     <%= f.number_field :extra_used_amount, class: "form-control", min: 0 %>
+    <% if budget.errors[:extra_used_amount].present? %>
+      <p class = "field_with_errors" >
+        <%= budget.errors[:extra_used_amount].join('. ') %>
+      </p>
+    <% end %>
   </div>
 
   <div class="centered">
