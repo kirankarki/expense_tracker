@@ -1,5 +1,5 @@
 <h1>New Expense</h1>
 
-<%= render 'form', expense: @expense %>
+<%= render 'form', budget: @budget, expense: @expense %>
 
-<%= link_to 'Back', expenses_path %>
+<%= link_to 'Back', budget_expenses_path(@budget) %>

@@ -15,10 +15,7 @@
         </li>
         <li <%= 'class=active' if request.url == budgets_url %> >
           <%= link_to 'Budgets', budgets_url %>
-        </li>
-        <li <%= 'class=active' if request.url == expenses_url %> >
-          <%= link_to 'Expenses', expenses_url %>
-        </li>
+        </li>                
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <% if user_signed_in? %>

@@ -25,6 +25,7 @@
 
 class Budget < ApplicationRecord
   belongs_to :user
+  has_many   :expenses
   after_initialize :init_values
 
   DEFAULT_DATE_FORMAT = '%d %b %Y'

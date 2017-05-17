@@ -1,4 +1,4 @@
-<%= form_for(expense) do |f| %>
+<%= form_for [budget, expense] do |f| %>
   <% if expense.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(expense.errors.count, "error") %> prohibited this expense from being saved:</h2>
@@ -30,12 +30,7 @@
     <%= f.label :spent_date %>
     <%= f.date_select :spent_date %>
   </div>
-
-  <div class="field">
-    <%= f.label :budget_id %>
-    <%= f.text_field :budget_id %>
-  </div>
-
+  
   <div class="actions">
     <%= f.submit %>
   </div>

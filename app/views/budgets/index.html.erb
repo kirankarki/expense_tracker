@@ -22,8 +22,9 @@
         <td><%= budget.original_amount %></td>
         <td><%= budget.remaining_amount %></td>
         <td><%= budget.extra_used_amount %></td>
+        <td><%= link_to 'Add expense',  new_budget_expense_path(budget) %></td>
+        <td><%= link_to 'View expenses', budget_expenses_path(budget) %></td>
         <td><%= link_to 'Show', budget %></td>
-        <td><%= link_to 'Edit', edit_budget_path(budget) %></td>
         <td><%= link_to 'Destroy', budget, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>

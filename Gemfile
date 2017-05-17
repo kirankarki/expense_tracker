@@ -47,9 +47,9 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
   gem 'better_errors', '~> 2.1', '>= 2.1.1'
+  gem 'binding_of_caller'
 
   # Annotates Rails/ActiveRecord Models, routes, fixtures, and others based on the database schema.
-
   gem 'annotate', '~> 2.7', '>= 2.7.1'
 end
 
