@@ -42,7 +42,7 @@
 
   <div class="form-group">
     <%= f.label :end_date %>
-    <%= f.text_field :end_date, class: "form-control", readonly: true, data: { provide: "datepicker", date_format: "dd M yyyy" } %>
+    <%= f.text_field :end_date, readonly: true, data: { provide: "datepicker", date_format: "dd M yyyy" } %>
     <% if budget.errors[:end_date].present? %>
       <p class = "field_with_errors" >
         <%= budget.errors[:end_date].join('. ') %>

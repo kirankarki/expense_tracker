@@ -1,12 +1,12 @@
 <h1>Expenses</h1>
 
-<table>
+<table class="table table-hover">
   <thead>
     <tr>
       <th>Title</th>
       <th>Description</th>
       <th>Amount</th>
-      <th>Spent date</th>      
+      <th>Spent date</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -18,9 +18,11 @@
         <td><%= expense.description %></td>
         <td><%= expense.amount %></td>
         <td><%= expense.spent_date %></td>
-        <td><%= link_to 'Show', budget_expense_path(@budget, expense) %></td>
-        <td><%= link_to 'Edit', edit_budget_expense_path(@budget, expense) %></td>
-        <td><%= link_to 'Destroy', budget_expense_path(@budget, expense), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td>
+          <%= link_to 'Show', budget_expense_path(@budget, expense), class: "btn btn-info" %>
+          <%= link_to 'Edit', edit_budget_expense_path(@budget, expense), class: "btn btn-warning" %>
+          <%= link_to 'Destroy', budget_expense_path(@budget, expense), class: "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %>
+        </td>
       </tr>
     <% end %>
   </tbody>

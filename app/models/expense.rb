@@ -22,4 +22,25 @@
 
 class Expense < ApplicationRecord
   belongs_to :budget
+  after_initialize :init_values
+
+  DEFAULT_DATE_FORMAT = '%d %b %Y'
+
+  ##
+  # Validations
+  #
+  validates :title, :amount, :spent_date, presence: true
+  validates :amount, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
+
+  def spent_date
+    if read_attribute(:spent_date) != nil
+      read_attribute(:spent_date).strftime(DEFAULT_DATE_FORMAT)
+    end
+  end
+
+  private
+    def init_values
+      self.amount     ||= 0
+      self.spent_date ||= Date.current.strftime(DEFAULT_DATE_FORMAT)
+    end
 end
