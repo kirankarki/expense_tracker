@@ -34,7 +34,7 @@ class Budget < ApplicationRecord
   # Validations
   #
   validates :title, :original_amount, :start_date, :end_date, :remaining_amount, presence: true
-  validates :original_amount, :remaining_amount, :extra_used_amount, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
+  validates :original_amount, :remaining_amount, :extra_used_amount, numericality: { only_integer: true, greater_than_or_equal_to: 0, less_than_or_equal_to: 2147483647 }
   validate  :is_remaining_mount_greater_than_original_amount
   validate  :is_start_date_greater_than_end_date
   validate  :allow_to_add_extra_used_amount_only_when_remaining_amount_is_zero
