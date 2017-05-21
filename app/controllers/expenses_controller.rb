@@ -4,10 +4,12 @@ class ExpensesController < ApplicationController
   before_action :load_budget
   before_action :set_expense, only: [:show, :edit, :update, :destroy]
 
+  helper_method :sort_column, :sort_direction
+
   # GET /expenses
   # GET /expenses.json
   def index
-    @expenses = load_budget.expenses.paginate(page: params[:page]).order('created_at DESC')
+    @expenses = load_budget.expenses.paginate(page: params[:page]).order( sort_column + " " + sort_direction )
   end
 
   # GET /expenses/1
@@ -65,6 +67,15 @@ class ExpensesController < ApplicationController
   end
 
   private
+
+    def sort_column
+      Expense.column_names.include?(params[:sort]) ? params[:sort] : 'created_at'      
+    end
+
+    def sort_direction
+      %w(asc desc).include?(params[:direction]) ? params[:direction] : 'desc'
+    end
+
     def load_budget
       @budget ||= Budget.find(params[:budget_id])
     end
