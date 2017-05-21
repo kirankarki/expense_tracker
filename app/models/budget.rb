@@ -54,6 +54,14 @@ class Budget < ApplicationRecord
     end
   end
 
+  def is_expired?
+    if Date.current <= Date.parse(self.end_date)
+      false
+    elsif Date.current > Date.parse(self.end_date)
+      true
+    end
+  end
+
   def init_values
     self.original_amount    ||= 0
     self.remaining_amount   ||= 0

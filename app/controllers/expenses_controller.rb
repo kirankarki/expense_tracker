@@ -7,7 +7,7 @@ class ExpensesController < ApplicationController
   # GET /expenses
   # GET /expenses.json
   def index
-    @expenses = load_budget.expenses.paginate(page: params[:page])
+    @expenses = load_budget.expenses.paginate(page: params[:page]).order('created_at DESC')
   end
 
   # GET /expenses/1

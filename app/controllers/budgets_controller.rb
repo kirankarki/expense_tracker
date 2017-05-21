@@ -6,7 +6,7 @@ class BudgetsController < ApplicationController
   # GET /budgets
   # GET /budgets.json
   def index
-    @budgets = current_user.budgets.paginate(page: params[:page])
+    @budgets = current_user.budgets.paginate(page: params[:page]).order('created_at DESC')
   end
 
   # GET /budgets/1

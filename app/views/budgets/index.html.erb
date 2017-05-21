@@ -15,7 +15,13 @@
 
   <tbody>
     <% @budgets.each do |budget| %>
-      <tr>
+      <% class_type = "default" %>
+      <% if budget.is_expired? %>
+        <% class_type = "danger" %>
+      <% else %>
+        <% class_type = "success" %>
+      <% end %>
+      <tr class= <%= class_type %> >
         <td><%= budget.title.truncate(40) %></td>
         <td><%= budget.start_date %></td>
         <td><%= budget.end_date %></td>
