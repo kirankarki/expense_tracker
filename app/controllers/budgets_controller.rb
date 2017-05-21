@@ -6,7 +6,7 @@ class BudgetsController < ApplicationController
   # GET /budgets
   # GET /budgets.json
   def index
-    @budgets = current_user.budgets.all
+    @budgets = current_user.budgets.paginate(page: params[:page])
   end
 
   # GET /budgets/1

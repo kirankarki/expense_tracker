@@ -33,6 +33,10 @@
   </tbody>
 </table>
 
+<div class="centered">
+  <%= will_paginate(@budgets, :renderer => WillPaginate::ActionView::LinkRenderer, class: 'pagination-lg') %>
+</div>
+
 <br>
 
 <%= link_to 'New Budget', new_budget_path %>

@@ -27,6 +27,9 @@ class Expense < ApplicationRecord
 
   DEFAULT_DATE_FORMAT = '%d %b %Y'
 
+  # Customize the pagination's default page value
+  self.per_page = 10
+
   ##
   # Validations
   #
