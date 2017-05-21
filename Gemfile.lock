@@ -61,6 +61,7 @@ GEM
       will_paginate
     builder (3.2.3)
     byebug (9.0.6)
+    chartkick (2.2.4)
     coderay (1.1.1)
     coffee-rails (4.2.1)
       coffee-script (>= 2.2.0)
@@ -82,6 +83,8 @@ GEM
     ffi (1.9.18)
     globalid (0.4.0)
       activesupport (>= 4.2.0)
+    groupdate (3.2.0)
+      activesupport (>= 3)
     i18n (0.8.1)
     jbuilder (2.6.4)
       activesupport (>= 3.0.0)
@@ -195,8 +198,10 @@ DEPENDENCIES
   bootstrap-sass (~> 3.3, >= 3.3.7)
   bootstrap-will_paginate (~> 1.0)
   byebug
+  chartkick (~> 2.2, >= 2.2.4)
   coffee-rails (~> 4.2)
   devise (~> 4.2, >= 4.2.1)
+  groupdate (~> 3.2)
   jbuilder (~> 2.5)
   jquery-rails
   listen (~> 3.0.5)

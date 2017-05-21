@@ -45,6 +45,10 @@ gem 'bootstrap-datepicker-rails', '~> 1.6', '>= 1.6.4.1'
 # Pagination
 gem 'bootstrap-will_paginate', '~> 1.0'
 
+# Data Visualization
+gem 'chartkick', '~> 2.2', '>= 2.2.4'
+gem 'groupdate', '~> 3.2'
+
 group :development, :test do
   # Debugging & Errors
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

@@ -35,5 +35,8 @@
   <%= @budget.extra_used_amount %>
 </p>
 
+<%= line_chart @budget.expenses.group_by_day_of_month(:created_at).count %>
+<%= column_chart @budget.expenses.group_by_day_of_week(:created_at, format: "%a").count %>
+
 <%= link_to 'Edit', edit_budget_path(@budget) %> |
 <%= link_to 'Back', budgets_path %>
