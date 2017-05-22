@@ -1,42 +1,56 @@
-<p id="notice"><%= notice %></p>
+<h1>Detail of "<%= @budget.title %>"</h1><br>
+<table class="table table-condensed">
+  <tbody>
+    <tr>
+      <th>Title </th>
+      <td><%= @budget.title %></td>
+    </tr>
 
-<p>
-  <strong>Title:</strong>
-  <%= @budget.title %>
-</p>
+    <tr>
+      <th>Description </th>
+      <td><%= @budget.description %></td>
+    </tr>
 
-<p>
-  <strong>Description:</strong>
-  <%= @budget.description %>
-</p>
+    <tr>
+      <th>Start date </th>
+      <td><%= @budget.start_date %></td>
+    </tr>
 
-<p>
-  <strong>Original amount:</strong>
-  <%= @budget.original_amount %>
-</p>
+    <tr>
+      <th>End date </th>
+      <td><%= @budget.end_date %></td>
+    </tr>
 
-<p>
-  <strong>Start date:</strong>
-  <%= @budget.start_date %>
-</p>
+    <tr>
+      <th>Original amount </th>
+      <td><%= @budget.original_amount %></td>
+    </tr>
 
-<p>
-  <strong>End date:</strong>
-  <%= @budget.end_date %>
-</p>
+    <tr>
+      <th>Remaining amount </th>
+      <td><%= @budget.remaining_amount %></td>
+    </tr>
 
-<p>
-  <strong>Remaining amount:</strong>
-  <%= @budget.remaining_amount %>
-</p>
+    <tr>
+      <th>Extra used amount </th>
+      <td><%= @budget.extra_used_amount %></td>
+    </tr>
 
-<p>
-  <strong>Extra used amount:</strong>
-  <%= @budget.extra_used_amount %>
-</p>
+    <tr>
+      <td colspan="2" class="centered">
+        <%= link_to 'Edit', edit_budget_path(@budget), class: "btn btn-warning" %>
+        <%= link_to 'Destroy', budget_path(@budget), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
+      </td>
+    </tr>
 
-<%= line_chart @budget.expenses.group_by_day_of_month(:created_at).count %>
-<%= column_chart @budget.expenses.group_by_day_of_week(:created_at, format: "%a").count %>
 
-<%= link_to 'Edit', edit_budget_path(@budget) %> |
+  </tbody>
+</table>
+<% result = {} %>
+<% @budget.expenses.all.map do |expense| %>
+  <% result[expense.spent_date] = result[expense.spent_date].nil? ? expense.amount : result[expense.spent_date] + expense.amount %>
+<% end %>
+
+<%= column_chart result %>
+
 <%= link_to 'Back', budgets_path %>
