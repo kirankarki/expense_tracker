@@ -2,15 +2,15 @@ default: &default
   :queues:
     - searchkick
 
-development: &development
+development:
   <<: *default
   :concurrency: 5
   :pidfile: tmp/pids/sidekiq.pid
 
-staging: &staging
+staging:
   <<: *default
   :concurrency: 10
 
-production: &production
+production:
   <<: *default
   :concurrency: 20
