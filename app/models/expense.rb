@@ -27,7 +27,9 @@ class Expense < ApplicationRecord
 
   DEFAULT_DATE_FORMAT = '%d %b %Y'
 
+  ##
   # Customize the pagination's default page value
+  #
   self.per_page = 10
 
   ##
@@ -35,6 +37,18 @@ class Expense < ApplicationRecord
   #
   validates :title, :amount, :spent_date, presence: true
   validates :amount, numericality: { only_integer: true, greater_than_or_equal_to: 0, less_than_or_equal_to: 2147483647 }
+
+  ##
+  # Elasticsearch
+  #
+  searchkick callbacks: :async
+
+  def search_data
+    {
+      title: title,
+      description: description
+    }
+  end
 
   def spent_date
     if read_attribute(:spent_date) != nil

@@ -49,6 +49,12 @@ gem 'bootstrap-will_paginate', '~> 1.0'
 gem 'chartkick', '~> 2.2', '>= 2.2.4'
 gem 'groupdate', '~> 3.2'
 
+# Search
+gem 'searchkick', '~> 2.3', '>= 2.3.1'
+
+# Background Jobs
+gem 'sidekiq', '~> 5.0', '>= 5.0.4'
+
 group :development, :test do
   # Debugging & Errors
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

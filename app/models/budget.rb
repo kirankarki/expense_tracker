@@ -30,7 +30,9 @@ class Budget < ApplicationRecord
 
   DEFAULT_DATE_FORMAT = '%d %b %Y'
 
+  ##
   # Customize the pagination's default page value
+  #
   self.per_page = 10
 
   ##
@@ -41,6 +43,19 @@ class Budget < ApplicationRecord
   validate  :is_remaining_mount_greater_than_original_amount
   validate  :is_start_date_greater_than_end_date
   validate  :allow_to_add_extra_used_amount_only_when_remaining_amount_is_zero
+
+  ##
+  # Elasticsearch 
+  #
+  searchkick callbacks: :async
+
+  def search_data 
+    {
+      title: title,
+      description: description
+    }
+  end
+
 
   def start_date
     if read_attribute(:start_date) != nil
