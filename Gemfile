@@ -58,6 +58,9 @@ group :development, :test do
 
   # Annotates Rails/ActiveRecord Models, routes, fixtures, and others based on the database schema.
   gem 'annotate', '~> 2.7', '>= 2.7.1'
+
+  # Code styles
+  gem 'rubocop', '~> 0.49.1', require: false
 end
 
 group :development do
