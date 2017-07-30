@@ -57,6 +57,9 @@ gem 'searchkick', '~> 2.3', '>= 2.3.1'
 # Background Jobs
 gem 'sidekiq', '~> 5.0', '>= 5.0.4'
 
+# Exception Tracker
+gem 'rollbar', '~> 2.15'
+
 group :development, :test do
   # Debugging & Errors
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
