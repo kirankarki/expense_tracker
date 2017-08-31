@@ -1,7 +1,6 @@
-<div class='title'>
-  <h1>Budgets</h1>
-</div>
-<table class="table table-hover">
+<%= render 'shared/title', title: 'Budgets' %>
+
+<table class='table table-hover'>
   <thead>
     <tr>
       <th>Title</th>
@@ -10,17 +9,21 @@
       <th>Original amount</th>
       <th>Remaining amount</th>
       <th>Extra used amount</th>
-      <th colspan="3"></th>
+      <th colspan='3'>
+        <div style='text-align: right;'>
+          <%= link_to 'Add new budget', new_budget_path, target: 'blank', class: 'btn btn-primary' %>
+        </div>
+      </th>
     </tr>
   </thead>
 
   <tbody>
     <% @budgets.each do |budget| %>
-      <% class_type = "default" %>
+      <% class_type = 'default' %>
       <% if budget.is_expired? %>
-        <% class_type = "danger" %>
+        <% class_type = 'danger' %>
       <% else %>
-        <% class_type = "success" %>
+        <% class_type = 'success' %>
       <% end %>
       <tr class= <%= class_type %> >
         <td><%= budget.title.truncate(40) %></td>
@@ -30,20 +33,16 @@
         <td><%= budget.remaining_amount %></td>
         <td><%= budget.extra_used_amount %></td>
         <td>
-          <%= link_to 'Add expense',  new_budget_expense_path(budget), class: "btn btn-primary" %>
-          <%= link_to 'View expenses', budget_expenses_path(budget), class: "btn btn-success" %>
-          <%= link_to 'Show', budget, class: "btn btn-info" %>
-          <%= link_to 'Destroy', budget, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
+          <%= link_to 'Add expense',  new_budget_expense_path(budget), class: 'btn btn-primary' %>
+          <%= link_to 'View expenses', budget_expenses_path(budget), class: 'btn btn-success' %>
+          <%= link_to 'Show', budget, class: 'btn btn-info' %>
+          <%= link_to 'Destroy', budget, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
         </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<div class="centered">
+<div class='centered'>
   <%= will_paginate(@budgets, :renderer => WillPaginate::ActionView::LinkRenderer, class: 'pagination-lg') %>
 </div>
-
-<br>
-
-<%= link_to 'New Budget', new_budget_path, target: 'blank' %>

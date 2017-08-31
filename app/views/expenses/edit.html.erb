@@ -1,8 +1,3 @@
-<div class='title'>
-    <h1>Editing Expense</h1>
-</div>    
+<%= render 'shared/title', title: 'Editing Expense' %> 
 
 <%= render 'form', budget: @budget, expense: @expense %>
-
-<%= link_to 'Show', budget_expense_path(@budget, @expense) %> |
-<%= link_to 'Back', budget_expenses_path(@budget) %>

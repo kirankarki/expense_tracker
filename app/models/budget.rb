@@ -45,6 +45,12 @@ class Budget < ApplicationRecord
   validate  :allow_to_add_extra_used_amount_only_when_remaining_amount_is_zero
 
   ##
+  # Callbacks
+  #
+
+  after_update :recalculate_remaining_extra_used_amounts, if: :original_amount_changed?
+
+  ##
   # Elasticsearch 
   #
   searchkick callbacks: :async
@@ -101,6 +107,27 @@ class Budget < ApplicationRecord
     def allow_to_add_extra_used_amount_only_when_remaining_amount_is_zero
       if remaining_amount != 0 && extra_used_amount > 0
         errors.add(:extra_used_amount, %q(remaining amount is not zero))
+      end
+    end
+
+    def recalculate_remaining_extra_used_amounts
+      expenses = self.expenses
+      if expenses.count > 0
+        total_spent_amount = expenses.pluck(:amount).inject(0) do |result, value|
+                                result + value
+                             end
+
+        original_amount    = self.original_amount
+        remaining_amount   = 0
+        extra_spent_amount = 0
+
+        if original_amount >= total_spent_amount
+          remaining_amount  = original_amount - total_spent_amount
+        elsif original_amount < total_spent_amount
+          extra_spent_amount = total_spent_amount - original_amount
+        end
+
+        self.update_columns(remaining_amount: remaining_amount, extra_used_amount: extra_spent_amount)        
       end
     end
 end

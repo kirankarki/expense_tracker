@@ -1,8 +1,6 @@
-<div class='title'>
-  <h1>Detail of "<%= @budget.title %>"</h1><br>
-</div>
+<%= render 'shared/title', title: "Detail of #{@budget.title}" %>
 
-<table class="table table-condensed">
+<table class='table table-condensed'>
   <tbody>
     <tr>
       <th>Title </th>
@@ -40,20 +38,18 @@
     </tr>
 
     <tr>
-      <td colspan="2" class="centered">
-        <%= link_to 'Edit', edit_budget_path(@budget), class: "btn btn-warning" %>
-        <%= link_to 'Destroy', budget_path(@budget), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
+      <td colspan='2' class='centered'>
+        <%= link_to 'Edit', edit_budget_path(@budget), class: 'btn btn-warning' %>
+        <%= link_to 'Destroy', budget_path(@budget), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+        <%= link_to 'Back', :back, class: 'btn btn-info' %>
       </td>
     </tr>
-
-
   </tbody>
 </table>
+
 <% result = {} %>
 <% @budget.expenses.all.map do |expense| %>
   <% result[expense.spent_date] = result[expense.spent_date].nil? ? expense.amount : result[expense.spent_date] + expense.amount %>
 <% end %>
 
 <%= column_chart result %>
-
-<%= link_to 'Back', budgets_path %>

@@ -78,6 +78,6 @@ class Expense < ApplicationRecord
         extra_spent_amount = total_spent_amount - original_amount
       end
 
-      self.budget.update(remaining_amount: remaining_amount, extra_used_amount: extra_spent_amount)
+      self.budget.update!(remaining_amount: remaining_amount, extra_used_amount: extra_spent_amount)
     end
 end

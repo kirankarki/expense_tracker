@@ -22,7 +22,7 @@
         <% if user_signed_in? %>
           <li>
             <%= form_tag search_path, class: 'navbar-form', method: :get do %>
-              <div class="form-group">
+              <div class = 'form-group'>
                 <div class='input-group input-group-sm'>
                   <%= text_field_tag :q, nil, placeholder: 'Search', class: 'form-control' %>
                     <div class='input-group-btn'>
