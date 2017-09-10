@@ -9,11 +9,19 @@
   </head>
 
   <body>
-    <%= render 'shared/nav_bar' %>
-    <div class="container body-layout">
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
-      <%= yield %>
-    </div>
+    <div id='wrapper'>
+		  <%= render 'shared/nav_bar' %>
+      <% if current_page?(budgets_path) %>
+        <div class='budgets-container content'>
+      <% else %>
+        <div class='container content'>
+      <% end %>
+        <p class='notice'><%= notice %></p>
+        <p class='alert'><%= alert %></p>
+        <%= yield %>
+      </div>
+
+      <%= render 'shared/footer' %>
+	  </div>
   </body>
 </html>

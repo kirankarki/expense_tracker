@@ -1,24 +1,29 @@
 <%= render 'shared/title', title: "Detail of #{@expense.title}" %>
 
-<p>
-  <strong>Title:</strong>
-  <%= @expense.title %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @expense.description %>
-</p>
-
-<p>
-  <strong>Amount:</strong>
-  <%= @expense.amount %>
-</p>
-
-<p>
-  <strong>Spent date:</strong>
-  <%= @expense.spent_date %>
-</p>
-
-<%= link_to 'Edit', edit_budget_expense_path(@budget, @expense) %> |
-<%= link_to 'Back', budget_expenses_path(@budget) %>
+<table class='table table-condensed table-hover table-responsive'>
+  <tbody>
+      <tr>
+        <th>Title</th>
+        <td><%= @expense.title %></td>
+      </tr>
+      <tr>
+        <th>Description</th>
+        <td><%= @expense.description %></td>
+      </tr>
+      <tr>
+        <th>Amount</th>
+        <td><%= number_with_delimiter(@expense.amount) %></td>
+      </tr>
+      <tr>
+        <th>Spent date</th>
+        <td><%= @expense.spent_date %></td>
+      </tr>
+      <tr>
+        <td colspan='2' class='centered'>
+          <%= link_to 'Edit', edit_budget_expense_path(@budget, @expense), class: 'btn btn-warning' %>
+          <%= link_to 'Destroy', budget_expense_path(@budget, @expense), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+          <%= link_to 'Back', :back, class: 'btn btn-info' %>
+        </td>
+      </tr>
+  </tbody>
+</table>

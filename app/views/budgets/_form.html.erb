@@ -33,19 +33,7 @@
     <%= f.text_field :end_date, class: 'form-control', readonly: true, data: { provide: 'datepicker', date_format: 'dd M yyyy' } %>
     <%= f.error_message_for(:end_date) %>
   </div>
-
-  <div class='form-group'>
-    <%= f.label :remaining_amount %>
-    <%= f.number_field :remaining_amount, class: 'form-control', min: 0 %>
-    <%= f.error_message_for(:remaining_amount) %>
-  </div>
-
-  <div class='form-group'>
-    <%= f.label :extra_used_amount %>
-    <%= f.number_field :extra_used_amount, class: 'form-control', min: 0 %>
-    <%= f.error_message_for(:extra_used_amount) %>    
-  </div>
-
+  
   <div class='centered'>
     <%= f.submit 'Save', class: 'btn btn-primary' %>
     <%= link_to 'Back', :back, class: 'btn btn-info' %>

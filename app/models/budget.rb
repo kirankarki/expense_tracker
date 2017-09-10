@@ -38,11 +38,9 @@ class Budget < ApplicationRecord
   ##
   # Validations
   #
-  validates :title, :original_amount, :start_date, :end_date, :remaining_amount, presence: true
-  validates :original_amount, :remaining_amount, :extra_used_amount, numericality: { only_integer: true, greater_than_or_equal_to: 0, less_than_or_equal_to: 2147483647 }
-  validate  :is_remaining_mount_greater_than_original_amount
+  validates :title, :original_amount, :start_date, :end_date, presence: true
+  validates :original_amount, numericality: { only_integer: true, greater_than_or_equal_to: 0, less_than_or_equal_to: 2147483647 }
   validate  :is_start_date_greater_than_end_date
-  validate  :allow_to_add_extra_used_amount_only_when_remaining_amount_is_zero
 
   ##
   # Callbacks
@@ -92,21 +90,9 @@ class Budget < ApplicationRecord
   end
 
   private
-    def is_remaining_mount_greater_than_original_amount
-      if remaining_amount > original_amount
-          errors.add(:remaining_amount, %q(can't be greater than original amount))
-      end
-    end
-
     def is_start_date_greater_than_end_date
       if Date.parse(start_date) > Date.parse(end_date)
         errors.add(:start_date, %q(can't be greather than end date))
-      end
-    end
-
-    def allow_to_add_extra_used_amount_only_when_remaining_amount_is_zero
-      if remaining_amount != 0 && extra_used_amount > 0
-        errors.add(:extra_used_amount, %q(remaining amount is not zero))
       end
     end
 
@@ -127,7 +113,7 @@ class Budget < ApplicationRecord
           extra_spent_amount = total_spent_amount - original_amount
         end
 
-        self.update_columns(remaining_amount: remaining_amount, extra_used_amount: extra_spent_amount)        
+        self.update_columns(remaining_amount: remaining_amount, extra_used_amount: extra_spent_amount)
       end
     end
 end

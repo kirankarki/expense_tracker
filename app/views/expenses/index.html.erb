@@ -20,7 +20,7 @@
       <tr>
         <td><%= expense.title.truncate(30) %></td>
         <td><%= expense.description.truncate(20) %></td>
-        <td><%= expense.amount %></td>
+        <td><%= number_with_delimiter(expense.amount) %></td>
         <td><%= expense.spent_date %></td>
         <td>
           <%= link_to 'Show', budget_expense_path(@budget, expense), class: 'btn btn-info' %>

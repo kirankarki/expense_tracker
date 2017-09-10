@@ -1,6 +1,6 @@
 <%= render 'shared/title', title: "Detail of #{@budget.title}" %>
 
-<table class='table table-condensed'>
+<table class='table table-condensed table-hover table-responsive'>
   <tbody>
     <tr>
       <th>Title </th>
@@ -24,17 +24,17 @@
 
     <tr>
       <th>Original amount </th>
-      <td><%= @budget.original_amount %></td>
+      <td><%= number_with_delimiter(@budget.original_amount) %></td>
     </tr>
 
     <tr>
       <th>Remaining amount </th>
-      <td><%= @budget.remaining_amount %></td>
+      <td><%= number_with_delimiter(@budget.remaining_amount) %></td>
     </tr>
 
     <tr>
       <th>Extra used amount </th>
-      <td><%= @budget.extra_used_amount %></td>
+      <td><%= number_with_delimiter(@budget.extra_used_amount) %></td>
     </tr>
 
     <tr>
@@ -47,9 +47,10 @@
   </tbody>
 </table>
 
-<% result = {} %>
-<% @budget.expenses.all.map do |expense| %>
-  <% result[expense.spent_date] = result[expense.spent_date].nil? ? expense.amount : result[expense.spent_date] + expense.amount %>
-<% end %>
+<%= line_chart @budget.expenses.group_by_day(:spent_date).sum(:amount) %>
 
-<%= column_chart result %>
+<%# result = {} %>
+<%# @budget.expenses.all.map do |expense| %>
+  <%# result[expense.spent_date] = result[expense.spent_date].nil? ? expense.amount : result[expense.spent_date] + expense.amount %>
+<%# end %>
+<%#= column_chart result %>
