@@ -99,10 +99,7 @@ class Budget < ApplicationRecord
     def recalculate_remaining_extra_used_amounts
       expenses = self.expenses
       if expenses.count > 0
-        total_spent_amount = expenses.pluck(:amount).inject(0) do |result, value|
-                                result + value
-                             end
-
+        total_spent_amount = expenses.sum(:amount)
         original_amount    = self.original_amount
         remaining_amount   = 0
         extra_spent_amount = 0
