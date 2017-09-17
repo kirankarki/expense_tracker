@@ -69,6 +69,9 @@ gem 'omniauth-google-oauth2', '~> 0.5.2'
 # Store session in DB
 gem 'activerecord-session_store', '~> 1.1'
 
+# Hack the app's boot time
+gem 'bootsnap', '~> 1.1', '>= 1.1.3', require: false
+
 group :development, :test do
   # Debugging & Errors
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
