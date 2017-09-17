@@ -31,7 +31,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
-         :omniauthable, omniauth_providers: [:twitter]
+         :omniauthable, omniauth_providers: %i[twitter facebook google_oauth2]
 
   has_many :budgets, dependent: :destroy
 
@@ -45,19 +45,35 @@ class User < ApplicationRecord
   end
 
   def self.omniauth_login_or_create_from_provider_data(provider_data)
-    Rails.logger.info "Nickname: #{provider_data.info.nickname}"
-    Rails.logger.info "Name: #{provider_data.info.name}"
-    Rails.logger.info "Email: #{provider_data.info.email}"
     where(provider: provider_data.provider, uid: provider_data.uid).first_or_create! do | user |
-      password = Devise.friendly_token[0, 20]
+      password      = Devise.friendly_token[0, 20]
+      general_info  = get_general_info(provider_data)
 
-      user.user_name              = provider_data.info.nickname
-      user.display_name           = provider_data.info.name
-      user.email                  = provider_data.info.email
+      user.user_name              = general_info[:user_name]
+      user.display_name           = general_info[:display_name]
+      user.email                  = general_info[:email]
       user.password               = password
       user.password_confirmation  = password
 
       #user.skip_confirmation!
     end
+  end
+
+  # Get name, username and email for social provider data
+  def self.get_general_info(provider_data)
+    sliced_data = {}
+    unless provider_data.blank?
+      Rails.logger.info "Provider_data: #{provider_data}"
+      case provider_data.provider # Twitter, Facebook and Google
+      when 'twitter'
+        sliced_data[:user_name] = provider_data.dig(:info, :nickname)
+      when 'facebook'
+        sliced_data[:user_name] = provider_data.dig(:info, :extra, :raw_info, :username)
+      end
+      sliced_data[:display_name]  = provider_data.dig(:info, :name)
+      sliced_data[:email]         = provider_data.dig(:info, :email)
+    end
+    Rails.logger.info "Sliced_data: #{sliced_data}"
+    sliced_data
   end
 end

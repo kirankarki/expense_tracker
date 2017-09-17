@@ -63,6 +63,8 @@ gem 'rollbar', '~> 2.15'
 
 # Social logins
 gem 'omniauth-twitter', '~> 1.4'
+gem 'omniauth-facebook', '~> 4.0'
+gem 'omniauth-google-oauth2', '~> 0.5.2'
 
 # Store session in DB
 gem 'activerecord-session_store', '~> 1.1'
