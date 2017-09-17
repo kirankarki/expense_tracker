@@ -26,4 +26,14 @@
     <%= f.submit 'Login', class: 'btn btn-primary' %>
     <%= link_to 'Sign up', new_user_registration_url, class: 'btn btn-info' %>
   </div>
+
+  <% if devise_mapping.omniauthable? %>
+    <% resource_class.omniauth_providers.each do |provider| %>
+      <%= link_to omniauth_authorize_path(resource_name, provider),class: "btn btn-social btn-#{provider}" do %>
+        <%= content_tag :span,nil,class: "fa fa-#{provider}" %>
+        <%= "Sign in with #{OmniAuth::Utils.camelize(provider)}" %>
+      <% end %>
+    <% end %>
+  <% end %>
+  
 <% end %>

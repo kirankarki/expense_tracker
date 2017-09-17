@@ -41,6 +41,7 @@ gem 'devise', '~> 4.2', '>= 4.2.1'
 # UI
 gem 'bootstrap-sass', '~> 3.3', '>= 3.3.7'
 gem 'bootstrap-datepicker-rails', '~> 1.6', '>= 1.6.4.1'
+gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.2'
 
 gem 'colorize', '~> 0.8.1'
 
@@ -59,6 +60,12 @@ gem 'sidekiq', '~> 5.0', '>= 5.0.4'
 
 # Exception Tracker
 gem 'rollbar', '~> 2.15'
+
+# Social logins
+gem 'omniauth-twitter', '~> 1.4'
+
+# Store session in DB
+gem 'activerecord-session_store', '~> 1.1'
 
 group :development, :test do
   # Debugging & Errors

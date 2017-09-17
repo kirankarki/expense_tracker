@@ -25,7 +25,7 @@
 
 class Budget < ApplicationRecord
   belongs_to :user
-  has_many   :expenses, dependent: :delete_all
+  has_many   :expenses, dependent: :destroy
   after_initialize :init_values
 
   DEFAULT_DATE_FORMAT = '%d %b %Y'
