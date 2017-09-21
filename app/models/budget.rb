@@ -81,15 +81,15 @@ class Budget < ApplicationRecord
     end
   end
 
-  def init_values
-    self.original_amount    ||= 0
-    self.remaining_amount   ||= 0
-    self.extra_used_amount  ||= 0
-    self.start_date         ||= Date.current.strftime(DEFAULT_DATE_FORMAT)
-    self.end_date           ||= (Date.current + 1.day ).strftime(DEFAULT_DATE_FORMAT)
-  end
-
   private
+    def init_values
+      self.original_amount    ||= 0
+      self.remaining_amount   ||= 0
+      self.extra_used_amount  ||= 0
+      self.start_date         ||= Date.current.strftime(DEFAULT_DATE_FORMAT)
+      self.end_date           ||= (Date.current + 1.day ).strftime(DEFAULT_DATE_FORMAT)
+    end
+
     def is_start_date_greater_than_end_date
       if Date.parse(start_date) > Date.parse(end_date)
         errors.add(:start_date, %q(can't be greather than end date))
