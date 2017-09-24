@@ -24,8 +24,6 @@ GEM
       erubis (~> 2.7.0)
       rails-dom-testing (~> 2.0)
       rails-html-sanitizer (~> 1.0, >= 1.0.3)
-    active_bootstrap_skin (0.1.4)
-      bootstrap-sass (~> 3.3.6)
     activeadmin (1.1.0)
       arbre (>= 1.1.1)
       coffee-rails
@@ -321,7 +319,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  active_bootstrap_skin (~> 0.1.4)
   activeadmin (~> 1.1)
   activerecord-session_store (~> 1.1)
   annotate (~> 2.7, >= 2.7.1)
