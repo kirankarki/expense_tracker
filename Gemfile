@@ -74,6 +74,7 @@ gem 'bootsnap', '~> 1.1', '>= 1.1.3', require: false
 
 # Admin dashboard
 gem 'activeadmin', '~> 1.1'
+gem 'active_bootstrap_skin', '~> 0.1.4'
 
 group :development, :test do
   # Debugging & Errors
