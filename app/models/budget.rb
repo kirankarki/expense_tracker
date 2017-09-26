@@ -107,7 +107,7 @@ class Budget < ApplicationRecord
         if original_amount >= total_spent_amount
           remaining_amount  = original_amount - total_spent_amount
         elsif original_amount < total_spent_amount
-          extra_spent_amount = total_spent_amount - original_amount
+          extra_spent_amount = original_amount - total_spent_amount
         end
 
         self.update_columns(remaining_amount: remaining_amount, extra_used_amount: extra_spent_amount)
