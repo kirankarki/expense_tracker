@@ -30,6 +30,8 @@ class Budget < ApplicationRecord
 
   DEFAULT_DATE_FORMAT = '%d %b %Y'
 
+  attr_reader :total_spent_expense
+
   ##
   # Customize the pagination's default page value
   #
@@ -81,6 +83,17 @@ class Budget < ApplicationRecord
     end
   end
 
+  def total_spent_expense
+    total_spent_amount  = 0
+    expenses            = self.expenses
+
+    if self.expenses.count > 0
+      total_spent_amount = expenses.sum(:amount)
+    end
+
+    total_spent_amount
+  end
+
   private
     def init_values
       self.original_amount    ||= 0
@@ -97,9 +110,9 @@ class Budget < ApplicationRecord
     end
 
     def recalculate_remaining_extra_used_amounts
-      expenses = self.expenses
-      if expenses.count > 0
-        total_spent_amount = expenses.sum(:amount)
+      total_spent_amount = total_spent_expense
+      
+      if total_spent_amount > 0
         original_amount    = self.original_amount
         remaining_amount   = 0
         extra_spent_amount = 0
