@@ -87,6 +87,9 @@ group :development, :test do
 
   # Code styles
   gem 'rubocop', '~> 0.49.1', require: false
+
+  # Generate ERD
+  gem 'rails-erd', '~> 1.5', '>= 1.5.2', require: false
 end
 
 group :development do
