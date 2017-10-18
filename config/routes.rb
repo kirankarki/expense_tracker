@@ -1,6 +1,7 @@
 require 'sidekiq/web'
 
 Rails.application.routes.draw do
+  resources :frequencies
   root to: 'home#index'
 
   devise_for :admin_users, ActiveAdmin::Devise.config
