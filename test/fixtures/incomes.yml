@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  description: MyText
+  amount: 1
+  received_date: 2017-10-18
+  user: one
+  frequency: one
+
+two:
+  title: MyString
+  description: MyText
+  amount: 1
+  received_date: 2017-10-18
+  user: two
+  frequency: two
