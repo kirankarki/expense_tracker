@@ -1,7 +1,7 @@
 class BudgetsController < ApplicationController
 
   before_action :authenticate_user!
-  before_action :set_budget, only: [:show, :edit, :update, :destroy]
+  before_action :set_budget, only: %i[show edit update destroy]
 
   # GET /budgets
   # GET /budgets.json

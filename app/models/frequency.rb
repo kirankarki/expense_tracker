@@ -9,4 +9,5 @@
 #
 
 class Frequency < ApplicationRecord
+    has_many :incomes
 end

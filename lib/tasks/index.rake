@@ -2,7 +2,7 @@ require 'colorize'
 
 namespace :index do 
     task :rebuild => :environment do
-        %w{Budget Expense}.each do |class_name|
+        %w{Budget Expense Income}.each do |class_name|
             print "*** #{class_name} ***\n"
             klass = class_name.constantize
             begin

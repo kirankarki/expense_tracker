@@ -27,7 +27,7 @@
         <% class_type = 'success' %>
       <% end %>
       <tr class= <%= class_type %> >
-        <td><%= budget.title.truncate(40) %></td>
+        <td><%= budget.title.truncate(20) %></td>
         <td><%= budget.start_date %></td>
         <td><%= budget.end_date %></td>
         <td><%= number_with_delimiter(budget.original_amount) %></td>

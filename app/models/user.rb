@@ -34,6 +34,7 @@ class User < ApplicationRecord
          :omniauthable, omniauth_providers: %i[twitter facebook google_oauth2]
 
   has_many :budgets, dependent: :destroy
+  has_many :incomes, dependent: :destroy
 
   # Override devise's default validation rules
   def email_required?

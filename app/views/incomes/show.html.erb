@@ -1,34 +1,38 @@
-<p id="notice"><%= notice %></p>
+<%= render 'shared/title', title: "Detail of #{@income.title}" %>
 
-<p>
-  <strong>Title:</strong>
-  <%= @income.title %>
-</p>
+<table class='table table-condensed table-hover table-responsive'>
+  <tbody>
+    <tr>
+      <th>Title</th>
+      <td><%= @income.title %></td>
+    </tr>
 
-<p>
-  <strong>Description:</strong>
-  <%= @income.description %>
-</p>
+    <tr>
+      <th>Description </th>
+      <td><%= @income.description %></td>
+    </tr>
 
-<p>
-  <strong>Amount:</strong>
-  <%= @income.amount %>
-</p>
+    <tr>
+      <th>Amount </th>
+      <td><%= number_with_delimiter(@income.amount) %></td>
+    </tr>
 
-<p>
-  <strong>Received date:</strong>
-  <%= @income.received_date %>
-</p>
+    <tr>
+      <th>Received date </th>
+      <td><%= @income.received_date %></td>
+    </tr>
 
-<p>
-  <strong>User:</strong>
-  <%= @income.user %>
-</p>
+    <tr>
+      <th>Frequency</th>
+      <td><%= @income.frequency.name %></td>
+    </tr>
 
-<p>
-  <strong>Frequency:</strong>
-  <%= @income.frequency %>
-</p>
-
-<%= link_to 'Edit', edit_income_path(@income) %> |
-<%= link_to 'Back', incomes_path %>
+    <tr>
+      <td colspan='2' class='centered'>
+        <%= link_to 'Edit', edit_income_path(@income), class: 'btn btn-warning' %>
+        <%= link_to 'Destroy', income_path(@income), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+        <%= link_to 'Back', :back, class: 'btn btn-info' %>
+      </td>
+    </tr>
+  </tbody>
+</table>
