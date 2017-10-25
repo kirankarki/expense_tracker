@@ -25,7 +25,7 @@ class Expense < ApplicationRecord
   after_initialize :init_values
   after_commit :update_budget_remaining_and_extra_used_amounts
 
-  DEFAULT_DATE_FORMAT = '%d %b %Y'
+  DEFAULT_DATE_FORMAT = '%d %b %Y'.freeze
 
   ##
   # Customize the pagination's default page value
