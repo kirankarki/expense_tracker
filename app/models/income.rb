@@ -27,6 +27,13 @@ class Income < ApplicationRecord
   belongs_to :user
   belongs_to :frequency
 
+  DEFAULT_DATE_FORMAT = '%d %b %Y'.freeze
+
+  ##
+  # Callbacks
+  #
+  after_initialize :init_values
+
   ##
   # Validations
   #
@@ -45,4 +52,10 @@ class Income < ApplicationRecord
       frequency: self.frequency.name
     }
   end
+
+  private
+    def init_values
+      self.amount     ||= 0
+      self.received_date ||= Date.current.strftime(DEFAULT_DATE_FORMAT)
+    end
 end
