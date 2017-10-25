@@ -1,0 +1,33 @@
+<%= render 'shared/title', title: 'Savings' %>
+
+<table class='table table-hover'>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Amount</th>
+      <th>Saved date</th>
+      <th>Frequency</th>
+      <th colspan="3">
+        <div style='text-align: right;'>
+          <%= link_to 'Add new saving', new_saving_path, target: 'blank', class: 'btn btn-primary' %>
+        </div>
+      </th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @savings.each do |saving| %>
+      <tr>
+        <td><%= saving.title %></td>
+        <td><%= number_with_delimiter(saving.amount) %></td>
+        <td><%= saving.saved_date %></td>
+        <td><%= saving.frequency.text %></td>
+        <td>
+          <%= link_to 'Add saving',  new_saving_path(saving), class: 'btn btn-primary' %>
+          <%= link_to 'View savings', savings_path(saving), class: 'btn btn-success' %>
+          <%= link_to 'Show', saving, class: 'btn btn-info' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

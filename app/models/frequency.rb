@@ -10,4 +10,5 @@
 
 class Frequency < ApplicationRecord
     has_many :incomes
+    has_many :savings
 end
