@@ -17,7 +17,7 @@
 #
 # Foreign Keys
 #
-#  fk_rails_95fd19c298  (budget_id => budgets.id)
+#  fk_rails_...  (budget_id => budgets.id)
 #
 
 class Expense < ApplicationRecord

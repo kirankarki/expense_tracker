@@ -19,8 +19,8 @@
 #
 # Foreign Keys
 #
-#  fk_rails_0a2c60972c  (user_id => users.id)
-#  fk_rails_ad6de04e29  (frequency_id => frequencies.id)
+#  fk_rails_...  (frequency_id => frequencies.id)
+#  fk_rails_...  (user_id => users.id)
 #
 
 class Saving < ApplicationRecord

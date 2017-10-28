@@ -20,7 +20,7 @@
 #
 # Foreign Keys
 #
-#  fk_rails_e708f32fd8  (user_id => users.id)
+#  fk_rails_...  (user_id => users.id)
 #
 
 class Budget < ApplicationRecord

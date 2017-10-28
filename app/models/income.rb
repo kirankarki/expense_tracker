@@ -19,8 +19,8 @@
 #
 # Foreign Keys
 #
-#  fk_rails_1628635902  (frequency_id => frequencies.id)
-#  fk_rails_e53b3fa7c7  (user_id => users.id)
+#  fk_rails_...  (frequency_id => frequencies.id)
+#  fk_rails_...  (user_id => users.id)
 #
 
 class Income < ApplicationRecord
