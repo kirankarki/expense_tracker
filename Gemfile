@@ -75,6 +75,9 @@ gem 'bootsnap', '~> 1.1', '>= 1.1.3', require: false
 # Admin dashboard
 gem 'activeadmin', '~> 1.1'
 
+# File upload
+gem 'shrine', '~> 2.8'
+
 group :development, :test do
   # Debugging & Errors
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
