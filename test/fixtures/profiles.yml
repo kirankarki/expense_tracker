@@ -1,0 +1,48 @@
+# == Schema Information
+#
+# Table name: profiles
+#
+#  id           :integer          not null, primary key
+#  display_name :string
+#  phone        :string
+#  dob          :date
+#  city         :string
+#  country      :string
+#  address      :string
+#  user_id      :integer
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#  gender_id    :integer
+#
+# Indexes
+#
+#  index_profiles_on_gender_id  (gender_id)
+#  index_profiles_on_user_id    (user_id)
+#
+# Foreign Keys
+#
+#  fk_rails_...  (gender_id => genders.id)
+#  fk_rails_...  (user_id => users.id)
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  display_name: MyString
+  phone: 1
+  dob: 2017-11-03
+  city: MyString
+  country: MyString
+  address: MyString
+  gender: one
+  user: one
+
+two:
+  display_name: MyString
+  phone: 1
+  dob: 2017-11-03
+  city: MyString
+  country: MyString
+  address: MyString
+  gender: two
+  user: two

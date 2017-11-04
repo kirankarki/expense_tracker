@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171025145237) do
+ActiveRecord::Schema.define(version: 20171104045229) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -63,6 +63,12 @@ ActiveRecord::Schema.define(version: 20171025145237) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "genders", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "incomes", id: :serial, force: :cascade do |t|
     t.string "title"
     t.text "description"
@@ -74,6 +80,21 @@ ActiveRecord::Schema.define(version: 20171025145237) do
     t.datetime "updated_at", null: false
     t.index ["frequency_id"], name: "index_incomes_on_frequency_id"
     t.index ["user_id"], name: "index_incomes_on_user_id"
+  end
+
+  create_table "profiles", force: :cascade do |t|
+    t.string "display_name"
+    t.string "phone"
+    t.date "dob"
+    t.string "city"
+    t.string "country"
+    t.string "address"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "gender_id"
+    t.index ["gender_id"], name: "index_profiles_on_gender_id"
+    t.index ["user_id"], name: "index_profiles_on_user_id"
   end
 
   create_table "savings", id: :serial, force: :cascade do |t|
@@ -110,7 +131,6 @@ ActiveRecord::Schema.define(version: 20171025145237) do
     t.inet "current_sign_in_ip"
     t.inet "last_sign_in_ip"
     t.string "user_name", default: ""
-    t.string "display_name", default: ""
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "provider"
@@ -123,6 +143,8 @@ ActiveRecord::Schema.define(version: 20171025145237) do
   add_foreign_key "expenses", "budgets"
   add_foreign_key "incomes", "frequencies"
   add_foreign_key "incomes", "users"
+  add_foreign_key "profiles", "genders"
+  add_foreign_key "profiles", "users"
   add_foreign_key "savings", "frequencies"
   add_foreign_key "savings", "users"
 end

@@ -14,7 +14,6 @@
 #  current_sign_in_ip     :inet
 #  last_sign_in_ip        :inet
 #  user_name              :string           default("")
-#  display_name           :string           default("")
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #  provider               :string
@@ -35,6 +34,7 @@ class User < ApplicationRecord
 
   has_many :budgets, dependent: :destroy
   has_many :incomes, dependent: :destroy
+  has_one  :profile, dependent: :destroy
 
   # Override devise's default validation rules
   def email_required?
