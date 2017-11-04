@@ -38,7 +38,7 @@
 <p>
   <strong>Image:</strong>
   <% if @profile.image.present? %>
-    <%= image_tag @profile.image.url %>
+    <%= image_tag @profile.image[:large_thumb].url %>
   <% else %>
     'No photo'
   <% end %>

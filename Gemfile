@@ -77,6 +77,9 @@ gem 'activeadmin', '~> 1.1'
 
 # File upload
 gem 'shrine', '~> 2.8'
+gem 'fastimage', '~> 2.1'
+gem 'image_processing', '~> 0.4.5'
+gem 'mini_magick', '~> 4.8'
 
 group :development, :test do
   # Debugging & Errors
