@@ -1,0 +1,10 @@
+<li <%= 'class=active' if request.url == new_user_registration_url %>>
+    <%= link_to new_user_registration_url do %>
+        <span class='glyphicon glyphicon-user'></span> Sign Up
+    <% end %>
+</li>
+<li <%= 'class=active' if request.url == new_user_session_url %>>
+    <%= link_to new_user_session_url do %>
+        <span class='glyphicon glyphicon-log-in'></span> Login
+    <% end %>
+</li>

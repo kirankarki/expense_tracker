@@ -10,7 +10,7 @@
 
   <body>
     <div id='wrapper'>
-		  <%= render 'shared/nav_bar' %>
+		  <%= render 'layouts/nav_bar/nav_bar' %>
       <% if current_page?(budgets_path) %>
         <div class='budgets-container content'>
       <% else %>
@@ -21,7 +21,7 @@
         <%= yield %>
       </div>
 
-      <%= render 'shared/footer' %>
+      <%= render 'layouts/footer/footer' %>
 	  </div>
   </body>
 </html>
