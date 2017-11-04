@@ -47,7 +47,6 @@ class Budget < ApplicationRecord
   ##
   # Callbacks
   #
-
   after_update :recalculate_remaining_extra_used_amounts, if: :original_amount_changed?
 
   ##

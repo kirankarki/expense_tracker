@@ -2,18 +2,20 @@
 #
 # Table name: profiles
 #
-#  id           :integer          not null, primary key
-#  display_name :string
-#  phone        :string
-#  dob          :date
-#  city         :string
-#  country      :string
-#  address      :string
-#  user_id      :integer
-#  created_at   :datetime         not null
-#  updated_at   :datetime         not null
-#  gender_id    :integer
-#  image_data   :text
+#  id          :integer          not null, primary key
+#  phone       :string
+#  dob         :date
+#  city        :string
+#  country     :string
+#  address     :string
+#  user_id     :integer
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#  gender_id   :integer
+#  image_data  :text
+#  first_name  :string
+#  middle_name :string
+#  last_name   :string
 #
 # Indexes
 #

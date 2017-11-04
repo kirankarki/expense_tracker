@@ -2,18 +2,20 @@
 #
 # Table name: profiles
 #
-#  id           :integer          not null, primary key
-#  display_name :string
-#  phone        :string
-#  dob          :date
-#  city         :string
-#  country      :string
-#  address      :string
-#  user_id      :integer
-#  created_at   :datetime         not null
-#  updated_at   :datetime         not null
-#  gender_id    :integer
-#  image_data   :text
+#  id          :integer          not null, primary key
+#  phone       :string
+#  dob         :date
+#  city        :string
+#  country     :string
+#  address     :string
+#  user_id     :integer
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#  gender_id   :integer
+#  image_data  :text
+#  first_name  :string
+#  middle_name :string
+#  last_name   :string
 #
 # Indexes
 #
@@ -29,6 +31,18 @@
 class Profile < ApplicationRecord
     include ImageUploader::Attachment.new(:image) # adds an `image` virtual attribute
 
+    ##
+    # Relationships
+    #
     belongs_to :user
     belongs_to :gender
+
+    ##
+    # Validations
+    #
+    validates :first_name, presence: true
+
+    def display_name
+        self.first_name || self.last_name || self.middle_name
+    end
 end

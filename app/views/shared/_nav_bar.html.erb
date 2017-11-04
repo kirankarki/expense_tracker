@@ -39,20 +39,29 @@
               </div>
             <% end %>
           </li>
-          <li <%= 'class=active' if request.url == edit_user_registration_url %>>
-            <%= link_to edit_user_registration_url do %>
-              <span class="glyphicon glyphicon-edit"></span> Edit Account
-            <% end %>
-          </li>
-          <li <%= 'class=active' if request.url == edit_user_profile_url(current_user, current_user.profile) %>>
-            <%= link_to edit_user_profile_url(current_user, current_user.profile) do %>
-              <span class="glyphicon glyphicon-edit"></span> Edit Profile
-            <% end %>
-          </li>
-          <li>
-            <%= link_to destroy_user_session_path, method: :delete do %>
-              <span class="glyphicon glyphicon-log-out"></span> Logout
-            <% end %>
+          <li class='dropdown'>
+            <a class='dropdown-toggle' data-toggle='dropdown' href='#'>
+              <%= image_tag current_user.profile.image[:small_thumb].url, id: 'nav-bar-profile-image', class: 'img-responsive img-circle' %>
+              <%= current_user.profile.display_name %>
+              <span class='caret'></span>
+            </a>
+            <ul class='dropdown-menu'>
+              <li <%= 'class=active' if request.url == edit_user_profile_url(current_user, current_user.profile) %>>
+                <%= link_to edit_user_profile_url(current_user, current_user.profile) do %>
+                  <span class="glyphicon glyphicon-edit"></span> Edit Profile
+                <% end %>
+              </li>
+              <li <%= 'class=active' if request.url == edit_user_registration_url %>>
+                <%= link_to edit_user_registration_url do %>
+                  <span class="glyphicon glyphicon-edit"></span> Edit Account
+                <% end %>
+              </li>
+              <li>
+                <%= link_to destroy_user_session_path, method: :delete do %>
+                  <span class="glyphicon glyphicon-log-out"></span> Logout
+                <% end %>
+              </li>
+            </ul>
           </li>
         <% else %>
           <li <%= 'class=active' if request.url == new_user_registration_url %>>

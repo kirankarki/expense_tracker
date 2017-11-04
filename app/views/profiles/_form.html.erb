@@ -6,9 +6,21 @@
   <% end %>
 
   <div class='form-group'>
-    <%= form.label :display_name %>
-    <%= form.text_field :display_name, id: :profile_display_name, class: 'form-control', autofocus: true %>
-    <%= form.error_message_for(:display_name) %>
+    <%= form.label :first_name %>
+    <%= form.text_field :first_name, id: :profile_first_name, class: 'form-control', autofocus: true %>
+    <%= form.error_message_for(:first_name) %>
+  </div>
+
+  <div class='form-group'>
+    <%= form.label :middle_name %>
+    <%= form.text_field :middle_name, id: :profile_middle_name, class: 'form-control' %>
+    <%= form.error_message_for(:middle_name) %>
+  </div>
+
+  <div class='form-group'>
+    <%= form.label :last_name %>
+    <%= form.text_field :last_name, id: :profile_last_name, class: 'form-control' %>
+    <%= form.error_message_for(:last_name) %>
   </div>
 
   <div class='form-group'>
@@ -51,6 +63,9 @@
     <%= form.label :image %>
     <%= form.hidden_field :image, value: form.object.cached_image_data %>
     <%= form.file_field :image, id: :profile_image %>
+    <div class="field">
+      Remove attachment: <%= form.check_box :remove_image %>
+    </div>
     <%= form.error_message_for(:image) %>
   </div>
 
