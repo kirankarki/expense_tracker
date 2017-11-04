@@ -13,6 +13,7 @@
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
 #  gender_id    :integer
+#  image_data   :text
 #
 # Indexes
 #

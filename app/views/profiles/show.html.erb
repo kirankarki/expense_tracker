@@ -32,11 +32,15 @@
 
 <p>
   <strong>Gender:</strong>
-  <%= @profile.gender %>
+  <%= @profile.gender.name %>
 </p>
 
 <p>
-  <strong>User:</strong>
-  <%= @profile.user %>
+  <strong>Image:</strong>
+  <% if @profile.image.present? %>
+    <%= image_tag @profile.image.url %>
+  <% else %>
+    'No photo'
+  <% end %>
 </p>
 

@@ -16,4 +16,8 @@
 # Ignore Byebug command history file.
 .byebug_history
 
+# Ignore erd file
 erd.pdf
+
+# Ignore locally uploaded files from public folder.
+public/uploads/*

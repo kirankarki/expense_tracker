@@ -25,7 +25,7 @@ class ProfilesController < InheritedResources::Base
   private
 
     def profile_params
-      params.require(:profile).permit(:display_name, :phone, :dob, :city, :country, :address, :gender_id, :user_id)
+      params.require(:profile).permit(:display_name, :phone, :dob, :city, :country, :address, :gender_id, :image)
     end
 
     def set_profile_of_current_user
