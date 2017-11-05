@@ -63,7 +63,7 @@
     <%= form.label :image %>
     <%= form.hidden_field :image, value: form.object.cached_image_data %>
     <%= form.file_field :image, id: :profile_image %>
-    <div class="field">
+    <div class='form-group'>
       Remove attachment: <%= form.check_box :remove_image %>
     </div>
     <%= form.error_message_for(:image) %>

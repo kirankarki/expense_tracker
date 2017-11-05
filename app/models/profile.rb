@@ -45,4 +45,18 @@ class Profile < ApplicationRecord
     def display_name
         self.first_name || self.last_name || self.middle_name
     end
+
+    def full_name
+        full_name = self.first_name
+        full_name << " #{self.middle_name}" if self.middle_name.present?
+        full_name << " #{self.last_name}" if self.last_name.present?
+        full_name
+    end
+
+    def city_and_country
+        city_country = ''
+        city_country << "#{self.city}, " if self.city.present?
+        city_country << "#{self.country}" if self.country.present?
+
+    end
 end

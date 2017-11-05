@@ -1,41 +1,92 @@
-<p id="notice"><%= notice %></p>
+<%= render 'shared/title', title: "Profile of #{@profile.display_name}" %>
 
-<p>
-  <strong>Phone:</strong>
-  <%= @profile.phone %>
-</p>
+<div class='row'>
+  <div class='col-lg-4'>
+  </div>
+  
+  <div class='col-lg-4'>
+    <div class='media'>
+      <div class='media-left'>
+        <% if @profile.image.present? %>
+          <%= image_tag @profile.image[:large_thumb].url, class: 'media-object img-thumbnail' %>
+        <% else %>
+          'No photo'
+        <% end %>
+      </div>
+      <div class='media-body'>
+        <h3 class='media-heading'>
+          <%= @profile.full_name %>
+        </h3>
+        <div class='table-responsive'>
+          <table class='table'>
+            <tbody>
+              <tr>
+                <th>
+                  <span class='glyphicon glyphicon-earphone'></span>
+                </th>
+                <td>
+                  <p>
+                    <%= @profile.phone %>
+                  </p>
+                </td>
+              </tr>
 
-<p>
-  <strong>Dob:</strong>
-  <%= @profile.dob %>
-</p>
+              <tr>
+                <th>
+                  <span class='glyphicon glyphicon-user'></span>
+                </th>
+                <td>
+                  <p>
+                    <%= @profile.gender.name.capitalize %>
+                  </p>
+                </td>
+              </tr>
 
-<p>
-  <strong>City:</strong>
-  <%= @profile.city %>
-</p>
+              <tr>
+                <th>
+                  <span class='glyphicon glyphicon-time'></span>
+                </th>
+                <td>
+                  <p>
+                    <%= @profile.dob %>
+                  </p>
+                </td>
+              </tr>
 
-<p>
-  <strong>Country:</strong>
-  <%= @profile.country %>
-</p>
+              <tr>
+                <th>
+                  <span class='glyphicon glyphicon-map-marker'></span>
+                </th>
+                <td>
+                  <p>
+                    <%= @profile.city_and_country %>
+                  </p>
+                </td>
+              </tr>
 
-<p>
-  <strong>Address:</strong>
-  <%= @profile.address %>
-</p>
+              <tr>
+                <th>
+                  <span class='glyphicon glyphicon-home'></span>
+                </th>
+                <td>
+                  <p>
+                    <%= @profile.address %>
+                  </p>
+                </td>
+              </tr>
 
-<p>
-  <strong>Gender:</strong>
-  <%= @profile.gender.name %>
-</p>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class='centered'>
+      <%= link_to 'Edit Profile', edit_user_profile_path(current_user, @profile ), class: 'btn btn-primary' %>
+      <%= link_to 'Back', :back, class: 'btn btn-info' %>
+    </div>
+  </div>
 
-<p>
-  <strong>Image:</strong>
-  <% if @profile.image.present? %>
-    <%= image_tag @profile.image[:large_thumb].url %>
-  <% else %>
-    'No photo'
-  <% end %>
-</p>
+  <div class='col-lg-4'>
+  </div>
+</div>
 
