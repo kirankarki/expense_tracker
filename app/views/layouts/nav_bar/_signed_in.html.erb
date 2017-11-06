@@ -15,7 +15,9 @@
 
 <li class='dropdown'>
   <a class='dropdown-toggle' data-toggle='dropdown' href='#'>
-    <%= image_tag current_user.profile.image[:small_thumb].url, id: 'nav-bar-profile-image', class: 'img-responsive img-circle' %>
+    <% if current_user.profile.image.present? %>
+      <%= image_tag current_user.profile.image[:small_thumb].url, id: 'nav-bar-profile-image', class: 'img-responsive img-circle' %>
+    <% end %>
     <%= current_user.profile.display_name %>
     <span class='caret'></span>
   </a>
