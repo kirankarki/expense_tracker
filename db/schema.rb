@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171104091017) do
+ActiveRecord::Schema.define(version: 20171112183103) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -96,6 +96,7 @@ ActiveRecord::Schema.define(version: 20171104091017) do
     t.string "first_name"
     t.string "middle_name"
     t.string "last_name"
+    t.boolean "has_profile_pic", default: false
     t.index ["gender_id"], name: "index_profiles_on_gender_id"
     t.index ["user_id"], name: "index_profiles_on_user_id"
   end
