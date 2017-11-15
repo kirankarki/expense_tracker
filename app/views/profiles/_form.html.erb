@@ -15,13 +15,15 @@
             <% if profile.image.present? %>
               <%= image_tag profile.image[:large_thumb].url, class: 'img-thumbnail' %>
               <% if profile.has_profile_pic %>
-                <div class='form-group'>
-                  Remove attachment: <%= form.check_box :remove_image %>
+                <div class='checkbox'>
+                  <%= form.label :remove_image do %>
+                    <%= form.check_box :remove_image %>Remove photo
+                  <% end %>
                 </div>
               <% end %>
             <% end %>
             <%= form.hidden_field :image, value: form.object.cached_image_data %>
-            <%= form.file_field :image, id: :profile_image %>
+            <%= form.file_field :image, id: :profile_image, class: 'btn btn-primary btn-md btn-block' %>
             <%= form.error_message_for(:image) %>
           </div>
         </div>
@@ -52,7 +54,7 @@
 
           <div class='form-group'>
             <%= form.label :dob %>
-            <%= form.date_select :dob, id: :profile_dob, class: 'form-control' %>
+            <%= form.date_select :dob, start_year: 1980, id: :profile_dob, class: 'form-control' %>
             <%= form.error_message_for(:dob) %>
           </div>
 
@@ -81,7 +83,8 @@
           </div>
         </div>
         <div class='centered'>
-          <%= form.submit %>
+          <%= form.submit 'Save', class: 'btn btn-primary'%>
+          <%= link_to 'Back', :back, class: 'btn btn-info' %>
         </div>
       <% end %>
     </div>
