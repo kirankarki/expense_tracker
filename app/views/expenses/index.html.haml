@@ -1,0 +1,24 @@
+= render 'shared/title', title: 'Expenses'
+%table.table.table-hover
+  %thead
+    %tr
+      %th Title
+      %th Description
+      %th= sortable 'amount'
+      %th= sortable 'spent_date'
+      %th{:colspan => "3"}
+        %div{:style => "text-align: right;"}
+          = link_to 'Add new expense', new_budget_expense_path(@budget), class: 'btn btn-primary'
+  %tbody
+    - @expenses.each do |expense|
+      %tr
+        %td= expense.title.truncate(30)
+        %td= expense.description.truncate(20)
+        %td= number_with_delimiter(expense.amount)
+        %td= expense.spent_date
+        %td
+          = link_to 'Show', budget_expense_path(@budget, expense), class: 'btn btn-info'
+          = link_to 'Edit', edit_budget_expense_path(@budget, expense), class: 'btn btn-warning'
+          = link_to 'Destroy', budget_expense_path(@budget, expense), class: 'btn btn-danger', method: :delete, data: { confirm: 'Are you sure?' }
+.centered
+  = will_paginate(@expenses, :renderer => WillPaginate::ActionView::LinkRenderer, class: 'pagination pagination-lg')

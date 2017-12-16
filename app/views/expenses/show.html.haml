@@ -1,0 +1,21 @@
+= render 'shared/title', title: "Detail of #{@expense.title}"
+%table.table.table-condensed.table-hover.table-responsive
+  %tbody
+    %tr
+      %th Title
+      %td= @expense.title
+    %tr
+      %th Description
+      %td= @expense.description
+    %tr
+      %th Amount
+      %td= number_with_delimiter(@expense.amount)
+    %tr
+      %th Spent date
+      %td= @expense.spent_date
+    %tr
+      %td.centered{:colspan => "2"}
+        = link_to 'Edit', edit_budget_expense_path(@budget, @expense), class: 'btn btn-warning'
+        = link_to 'Destroy', budget_expense_path(@budget, @expense), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger'
+        = link_to 'Add expense', new_budget_expense_path(@budget), class: 'btn btn-primary'
+        = link_to 'Back', :back, class: 'btn btn-info'

@@ -1,0 +1,63 @@
+.row
+  .col-lg-2
+  .col-lg-8
+    .row
+      = form_with(model: [current_user, profile], local: true) do |form|
+        - if profile.errors.any?
+          #error_explanation
+            %h3
+              = pluralize(profile.errors.count, 'error')
+              prohibited from being saved.
+        .col-lg-5
+          .right_aligned
+            - if profile.image.present?
+              = image_tag profile.image[:large_thumb].url, class: 'img-thumbnail'
+              - if profile.has_profile_pic
+                .checkbox
+                  = form.label :remove_image do
+                    = form.check_box :remove_image
+                    Remove photo
+            = form.hidden_field :image, value: form.object.cached_image_data
+            = form.file_field :image, id: :profile_image, class: 'btn btn-primary btn-md btn-block'
+            = form.error_message_for(:image)
+        .col-lg-7
+          .form-group
+            = form.label :first_name
+            = form.text_field :first_name, id: :profile_first_name, class: 'form-control', autofocus: true
+            = form.error_message_for(:first_name)
+          .form-group
+            = form.label :middle_name
+            = form.text_field :middle_name, id: :profile_middle_name, class: 'form-control'
+            = form.error_message_for(:middle_name)
+          .form-group
+            = form.label :last_name
+            = form.text_field :last_name, id: :profile_last_name, class: 'form-control'
+            = form.error_message_for(:last_name)
+          .form-group
+            = form.label :phone
+            = form.text_field :phone, id: :profile_phone, class: 'form-control'
+            = form.error_message_for(:phone)
+          .form-group
+            = form.label :dob
+            = form.date_select :dob, start_year: 1980, id: :profile_dob, class: 'form-control'
+            = form.error_message_for(:dob)
+          .form-group
+            = form.label :city
+            = form.text_field :city, id: :profile_city, class: 'form-control'
+            = form.error_message_for(:city)
+          .form-group
+            = form.label :country
+            = form.text_field :country, id: :profile_country, class: 'form-control'
+            = form.error_message_for(:country)
+          .form-group
+            = form.label :address
+            = form.text_field :address, id: :profile_address, class: 'form-control'
+            = form.error_message_for(:address)
+          .form-group
+            = form.label :gender_id
+            = form.select :gender_id, Gender.all.collect{|f| [f.name, f.id]}, {}, { class: 'form-control', id: :profile_gender_id }
+            = form.error_message_for(:gender_id)
+        .centered
+          = form.submit 'Save', class: 'btn btn-primary'
+          = link_to 'Back', :back, class: 'btn btn-info'
+  .col-lg-2

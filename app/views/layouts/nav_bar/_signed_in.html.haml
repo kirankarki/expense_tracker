@@ -1,0 +1,27 @@
+%li
+  = form_tag search_path, class: 'navbar-form', id: 'search-form', method: :get do
+    .form-group
+      .input-group.input-group-sm
+        = text_field_tag :q, nil, placeholder: 'Search', class: 'form-control'
+        .input-group-btn
+          = button_tag class: 'btn btn-default' do
+            %i.glyphicon.glyphicon-search
+%li.dropdown
+  %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+    - if current_user.profile.image.present?
+      = image_tag current_user.profile.image[:small_thumb].url, id: 'nav-bar-profile-image', class: 'img-responsive img-circle'
+    = current_user.profile.display_name
+    %span.caret
+  %ul.dropdown-menu
+    %li{ class: ('active' if request.url == user_profile_url(current_user, current_user.profile))}
+      = link_to user_profile_url(current_user, current_user.profile) do
+        %span.glyphicon.glyphicon-user
+        View Profile
+    %li{ class: ('active' if request.url == edit_user_registration_url)}
+      = link_to edit_user_registration_url do
+        %span.glyphicon.glyphicon-edit
+        Edit Account
+    %li
+      = link_to destroy_user_session_path, method: :delete do
+        %span.glyphicon.glyphicon-log-out
+        Logout

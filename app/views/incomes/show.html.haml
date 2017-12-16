@@ -1,0 +1,23 @@
+= render 'shared/title', title: "Detail of #{@income.title}"
+%table.table.table-condensed.table-hover.table-responsive
+  %tbody
+    %tr
+      %th Title
+      %td= @income.title
+    %tr
+      %th Description
+      %td= @income.description
+    %tr
+      %th Amount
+      %td= number_with_delimiter(@income.amount)
+    %tr
+      %th Received date
+      %td= @income.received_date
+    %tr
+      %th Frequency
+      %td= @income.frequency.name
+    %tr
+      %td.centered{:colspan => "2"}
+        = link_to 'Edit', edit_income_path(@income), class: 'btn btn-warning'
+        = link_to 'Destroy', income_path(@income), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger'
+        = link_to 'Back', :back, class: 'btn btn-info'

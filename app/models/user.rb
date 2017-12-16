@@ -51,7 +51,6 @@ class User < ApplicationRecord
       general_info  = get_general_info(provider_data)
 
       user.user_name              = general_info[:user_name]
-      user.display_name           = general_info[:display_name]
       user.email                  = general_info[:email]
       user.password               = password
       user.password_confirmation  = password
@@ -71,7 +70,6 @@ class User < ApplicationRecord
       when 'facebook'
         sliced_data[:user_name] = provider_data.dig(:info, :extra, :raw_info, :username)
       end
-      sliced_data[:display_name]  = provider_data.dig(:info, :name)
       sliced_data[:email]         = provider_data.dig(:info, :email)
     end
     Rails.logger.info "Sliced_data: #{sliced_data}"

@@ -1,0 +1,50 @@
+= render 'shared/title', title: "Profile of #{@profile.display_name}"
+.row
+  .col-lg-4
+  .col-lg-4
+    .media
+      .media-left
+        - if @profile.image.present?
+          = image_tag @profile.image[:large_thumb].url, class: 'media-object img-thumbnail'
+        - else
+          'No photo'
+      .media-body
+        %h3.media-heading
+          = @profile.full_name
+        .table-responsive
+          %table.table
+            %tbody
+              %tr
+                %th
+                  %span.glyphicon.glyphicon-earphone
+                %td
+                  %p
+                    = @profile.phone
+              %tr
+                %th
+                  %span.glyphicon.glyphicon-user
+                %td
+                  %p
+                    = @profile.gender.name.capitalize
+              %tr
+                %th
+                  %span.glyphicon.glyphicon-time
+                %td
+                  %p
+                    = @profile.dob
+              %tr
+                %th
+                  %span.glyphicon.glyphicon-map-marker
+                %td
+                  %p
+                    = @profile.city_and_country
+              %tr
+                %th
+                  %span.glyphicon.glyphicon-home
+                %td
+                  %p
+                    = @profile.address
+    .centered
+      = link_to 'Edit Profile', edit_user_profile_path(current_user, @profile ), class: 'btn btn-primary'
+      = link_to 'Back', :back, class: 'btn btn-info'
+  .col-lg-4

@@ -1,0 +1,30 @@
+= form_for(income) do |f|
+  - if income.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(income.errors.count, 'error')
+        prohibited this income from being saved:
+      %ul
+        - income.errors.full_messages.each do |message|
+          %li= message
+  .form-group
+    = f.label :title
+    = f.text_field :title, class: 'form-control', autofocus: true
+    = f.error_message_for(:title)
+  .form-group
+    = f.label :description
+    = f.text_area :description, class: 'form-control'
+    = f.error_message_for(:description)
+  .form-group
+    = f.label :amount
+    = f.number_field :amount, class: 'form-control', min: 0
+    = f.error_message_for(:amount)
+  .form-group
+    = f.label :received_date
+    = f.text_field :received_date, class: 'form-control', readonly: true, data: { provide: 'datepicker', date_format: 'dd M yyyy' }
+  .form-group
+    = f.label :frequency_id
+    = f.select :frequency_id, Frequency.all.collect{|f| [f.name, f.id]}, {}, { class: 'form-control' }
+  .centered
+    = f.submit 'Save', class: 'btn btn-primary'
+    = link_to 'Back', :back, class: 'btn btn-info'

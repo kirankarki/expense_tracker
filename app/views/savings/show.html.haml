@@ -1,0 +1,23 @@
+= render 'shared/title', title: "Detail of #{@saving.title}"
+%table.table.table-condensed.table-hover.table-responsive
+  %tbody
+    %tr
+      %th Title
+      %td= @saving.title
+    %tr
+      %th Description
+      %td= @saving.description
+    %tr
+      %th Amount
+      %td= number_with_delimiter(@saving.amount)
+    %tr
+      %th Saved date
+      %td= @saving.saved_date
+    %tr
+      %th Frequency
+      %td= @saving.frequency.name
+    %tr
+      %td.centered{:colspan => "2"}
+        = link_to 'Edit', edit_saving_path(@saving), class: 'btn btn-warning'
+        = link_to 'Destroy', saving_path(@saving), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger'
+        = link_to 'Back', :back, class: 'btn btn-info'

@@ -81,6 +81,9 @@ gem 'fastimage', '~> 2.1'
 gem 'image_processing', '~> 0.4.5'
 gem 'mini_magick', '~> 4.8'
 
+# Haml for template engine
+gem 'haml-rails', '~> 1.0'
+
 group :development, :test do
   # Debugging & Errors
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

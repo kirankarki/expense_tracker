@@ -1,0 +1,24 @@
+%nav.navbar.navbar-inverse.navbar-fixed-top
+  .container
+    .navbar-header
+      %button.navbar-toggle{"data-target" => "#myNavbar", "data-toggle" => "collapse", :type => "button"}
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+      = link_to 'Expense Tracker', root_url, class: "navbar-brand"
+    #myNavbar.collapse.navbar-collapse
+      %ul.nav.navbar-nav
+        %li{ class: ('active' if request.url == root_url)}
+          = link_to 'Home', root_url
+        %li{ class: ('active' if request.url == budgets_url)}
+          = link_to 'Budgets', budgets_url
+        %li{ class: ('active' if request.url == incomes_url)}
+          = link_to 'Incomes', incomes_url
+        %li{ class: ('active' if request.url == savings_url)}
+          = link_to 'Savings', savings_url
+
+      %ul.nav.navbar-nav.navbar-right
+        - if user_signed_in?
+          = render 'layouts/nav_bar/signed_in'
+        - else
+          = render 'layouts/nav_bar/not_signed_in'

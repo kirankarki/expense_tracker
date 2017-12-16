@@ -1,0 +1,35 @@
+= render 'shared/title', title: 'Budgets'
+%table.table.table-hover
+  %thead
+    %tr
+      %th Title
+      %th Start date
+      %th End date
+      %th Original amount
+      %th Used amount
+      %th Remaining amount
+      %th Extra used amount
+      %th{:colspan => "3"}
+        %div{:style => "text-align: right;"}
+          = link_to 'Add new budget', new_budget_path, target: 'blank', class: 'btn btn-primary'
+  %tbody
+    - @budgets.each do |budget|
+      - class_type = 'default'
+      - if budget.is_expired?
+        - class_type = 'danger'
+      - else
+        - class_type = 'success'
+      %tr{:class => class_type }
+        %td= budget.title.truncate(20)
+        %td= budget.start_date
+        %td= budget.end_date
+        %td= number_with_delimiter(budget.original_amount)
+        %td= number_with_delimiter(budget.total_spent_expense)
+        %td= number_with_delimiter(budget.remaining_amount)
+        %td= number_with_delimiter(budget.extra_used_amount)
+        %td
+          = link_to 'Add expense',  new_budget_expense_path(budget), class: 'btn btn-primary'
+          = link_to 'View expenses', budget_expenses_path(budget), class: 'btn btn-success'
+          = link_to 'Show', budget, class: 'btn btn-info'
+.centered
+  = will_paginate(@budgets, :renderer => WillPaginate::ActionView::LinkRenderer, class: 'pagination-lg')
